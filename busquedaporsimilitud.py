@@ -5,11 +5,6 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
-from settings import *
-import os 
-from dotenv import load_dotenv
-load_dotenv()
-openai.api_key = os.environ['OPENAI_API_KEY']
 
 # Clase principal del sistema de búsqueda
 class VectorSearchSystem:
@@ -19,7 +14,8 @@ class VectorSearchSystem:
         self.collection = self.chroma_client.get_collection(name=collection_name)
         
         # Configuración de OpenAI
-        openai.api_key = "sk-proj-VXMAN26EjnlYjjlRjVfgN2EQONa7aFC28dYlq_wQ1XTiPgwOw37beXoRicSWgQ_NzQkIWib5_ET3BlbkFJ5DwOSmlch8d54JeUNcHdmJ_KoAbhZOr8LVeeR1kLkq4pxNla"
+        openai.api_key = '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'  # Reemplaza con tu clave real
+
     def generate_embedding(self, text):
         """Genera un embedding para un texto dado usando OpenAI"""
         response = openai.Embedding.create(
